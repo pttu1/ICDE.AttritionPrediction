@@ -1,0 +1,107 @@
+﻿@model ICDE.CompareProducts.Models.EmployeeViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form asp-controller="Employees" asp-action="Index" method="get">
+    <p>
+        <select asp-for="EmployeeType" asp-items="Model.JobRoles">
+            <option value="">All</option>
+        </select>
+        Title: <input type="text" asp-for="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].Age)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].BusinessTravel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].DailyRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].EducationField)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].EnvironmentSatisfaction)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].Gender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].HourlyRate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].JobRole)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].MaritalStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].PercentSalaryHike)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees[0].PerformanceRating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Employees) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessTravel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DailyRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DistanceFromHome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EducationField)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnvironmentSatisfaction)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HourlyRate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.JobRole)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaritalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PercentSalaryHike)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerformanceRating)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
